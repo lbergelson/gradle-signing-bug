@@ -5,6 +5,7 @@ plugins {
 }
 
 version = '1.0-SNAPSHOT'
+group = "example.signing.bug"
 ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
 
 publishing {
