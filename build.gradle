@@ -1,0 +1,21 @@
+plugins {
+  id 'java'
+  id 'maven-publish'
+  id 'signing'
+}
+
+version = '1.0-SNAPSHOT'
+ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
+
+publishing {
+    publications {
+        main(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+signing {
+    required { isReleaseVersion && gradle.taskGraph.hasTask("publish") }
+    sign publishing.publications.main
+}
